@@ -6,33 +6,20 @@
 # completion = ["stanko", "ana", "mislav"]
 
 # Test case 2
-# participant = ["marina", "josipa", "nikola", "vinko", "filipa"]
-# completion = ["josipa", "filipa", "marina", "nikola"]
-
-# Test case 3
-# participant = ["leo", "kiki", "eden"]
-# completion = ["eden", "kiki"]
-
-# Test case 4
-participant = ["leo"]
-completion = []
+participant = ["marina", "josipa", "nikola", "vinko", "filipa"]
+completion = ["josipa", "filipa", "marina", "nikola"]
 
 def solution(participant, completion):
-    answer = ''
-    participant.sort()
-    completion.sort()
-    # print(participant)
-    # print(completion)
-    if len(completion) > 0:
-        for i in range(len(completion)):
-            if participant[i] != completion[i]:
-                answer = participant[i]
-                quit
-            elif i == len(completion) - 1:
-                answer = participant[i+1]
-                quit
-    else:
-        answer = participant[0]
+    # list comprehension
+    dict_participant = {i:participant[i] for i in range(len(participant))}
+
+    # dictionary comprehension
+    for i in range(len(completion)):
+        failure = [k for k,v in dict_participant.items() if v == completion[i]]
+        dict_participant.pop(failure[0])
+
+    for v in dict_participant.values():
+        answer = v
     return answer
 
-print(solution(participant, completion))
+print(solution(participant,completion))
