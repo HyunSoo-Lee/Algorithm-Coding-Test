@@ -2,7 +2,7 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/42577
 
 # Test case 1
-phone_book = ["97674223119", "119", "1195524421"]
+phone_book = ["97674223", "119", "1195524421"]
 # Test case 2	
 # phone_book = ["123","456","789"]
 # Test case 3
@@ -27,12 +27,20 @@ def solution(phone_book):
     #                 # print(include_num[n], 'correct')
     #                 answer = False
 
-    # 꼼수 풀이법
-    for i in range(len(phone_book)):
-        for j in range(len(phone_book)):
-            if phone_book[i] == phone_book[j][:len(phone_book[i])] and phone_book[i] != phone_book[j]:
-                answer = False
+    # for문을 줄이기 위해 list [:]를 사용해서 풀이
+    # for i in range(len(phone_book)):
+    #     for j in range(len(phone_book)):
+    #         if phone_book[i] == phone_book[j][:len(phone_book[i])] and phone_book[i] != phone_book[j]:
+    #             answer = False
 
+    # 효율성 테스트 결과 O(n^2)은 무조건 탈락인듯. 다른 방법을 찾아야 한다.
+    # list 내의 원소가 String 형태의 숫자들로 이루어진 경우,
+    # 해당 숫자의 크기와 상관없이 첫째자리 숫자의 크기로 순서가 정해진다.
+    phone_book.sort()
+    #print(phone_book)
+    for i in range(len(phone_book)-1):
+        if phone_book[i] == phone_book[i+1][:len(phone_book[i])] : 
+            answer = False
     return answer
 
 print(solution(phone_book))
