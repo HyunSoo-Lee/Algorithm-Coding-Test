@@ -15,17 +15,23 @@ phone_book = ["97674223119", "119", "1195524421"]
 
 def solution(phone_book):
     answer = True
+    # 정석적인 풀이법
+    # for i in range(len(phone_book)):
+    #     # list comprehension
+    #     include_num = [v for v in phone_book if phone_book[i] in v and phone_book[i] != v]
+    #     if len(include_num) != 0:
+    #         # print(phone_book[i], include_num)
+    #         # include num 돌면서 포함된 문자열이 맨 앞에 있는지 확인
+    #         for n in range(len(include_num)):
+    #             if phone_book[i] == include_num[n][:len(phone_book[i])]:
+    #                 # print(include_num[n], 'correct')
+    #                 answer = False
 
+    # 꼼수 풀이법
     for i in range(len(phone_book)):
-        # list comprehension
-        include_num = [v for v in phone_book if phone_book[i] in v and phone_book[i] != v]
-        if len(include_num) != 0:
-            print(phone_book[i], include_num)
-
-            # include num 돌면서 포함된 문자열이 맨 앞에 있는지 확인
-            for n in range(len(include_num)):
-                if phone_book[i] == include_num[n][:len(phone_book[i])]:
-                    print(include_num[n], 'correct')
+        for j in range(len(phone_book)):
+            if phone_book[i] == phone_book[j][:len(phone_book[i])] and phone_book[i] != phone_book[j]:
+                answer = False
 
     return answer
 
