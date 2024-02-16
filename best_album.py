@@ -1,5 +1,5 @@
 # problem URL
-# https://school.programmers.co.kr/learn/courses/30/lessons/42578
+# https://school.programmers.co.kr/learn/courses/30/lessons/42579?language=python
 
 genres = ["classic", "pop", "classic", "classic", "pop"]
 plays = [500, 600, 150, 800, 2500]
@@ -14,8 +14,14 @@ def solution(genres, plays):
             music_dict[genres[i]].append(song)
         else:
             music_dict[genres[i]] = [song]
-    print(music_dict)
-    
+    for genres, songs in music_dict.items():
+        music_dict[genres] = sorted(songs, key=lambda x: x[0])
+    for genres, songs in music_dict.items():
+        if len(songs) == 2:
+            print(songs)
+        else:
+            print(songs[1:])
+
     return answer
 
-print(solution(genres,plays))
+solution(genres,plays)
