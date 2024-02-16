@@ -21,8 +21,10 @@ def solution(genres, plays):
     genre_max = []
     # 최대값 장르 찾아서 return값 최대한 가깝게 소팅하는것부터!
     for genres, songs in music_dict.items():
-        print(songs[-1])
-    print(music_dict)
+        print(genres)
+        print(songs)
+        genre_max.append(songs[-1][0])
+    print(genre_max)
     return answer
 
 solution(genres,plays)
