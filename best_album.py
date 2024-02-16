@@ -16,12 +16,13 @@ def solution(genres, plays):
             music_dict[genres[i]] = [song]
     for genres, songs in music_dict.items():
         music_dict[genres] = sorted(songs, key=lambda x: x[0])
-    for genres, songs in music_dict.items():
-        if len(songs) == 2:
-            print(songs)
-        else:
-            print(songs[1:])
+    print(music_dict)
 
+    genre_max = []
+    # 최대값 장르 찾아서 return값 최대한 가깝게 소팅하는것부터!
+    for genres, songs in music_dict.items():
+        print(songs[-1])
+    print(music_dict)
     return answer
 
 solution(genres,plays)
