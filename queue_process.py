@@ -3,26 +3,37 @@
 
 def solution(priorities, location):
     answer = 0
-    prior_process = priorities[0]
+    process = []
+    for i in range(len(priorities)):
+        process.append(i)
     i = 0
     while(1):
-        print(priorities[i], i)
-        if priorities[i] > prior_process:
-            prior_process = priorities[i]
-            priorities.remove(priorities[i])
-            answer += 1
-        elif i < len(priorities) - 1: i += 1
-        else : 
-            if i != location:
-                # 여기서부터 다시 시작, len(priorities)보다 적으면 끝까지 돌리고, 아니면 다시 i = 0으로 돌아가야해.
-                i = 0
-                prior_process = priorities[0]
-            elif i == location:
-                print(answer)
-                quit()
-        print(priorities, prior_process)
+        maximum = max(priorities)
+        if maximum == -1:
+            break
+        if priorities[0] != maximum:
+            priorities.append(priorities[0])
+            process.append(process[0])
+            priorities.remove(priorities[0])
+            process.remove(process[0])
+        else:
+            priorities[0] = -1
+            priorities.append(priorities[0])
+            process.append(process[0])
+            priorities.remove(priorities[0])
+            process.remove(process[0])  
+        print(i)
+        print(priorities)
+        print(process) 
+        print('-----')
+        i += 1
+    answer = process.index(location) + 1
     return answer
 
-priorities = [1,1,9,1,1,1] #[2,1,3,2]
-location = 0 #2
-print(solution(priorities, location))
+priorities = [2,3,1,2]
+location = 3
+# 기대값 2
+# priorities = [2,1,3,2]
+# location = 2
+# 기대값 1
+print('answer = ', solution(priorities, location))
