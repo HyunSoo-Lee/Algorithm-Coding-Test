@@ -9,4 +9,3 @@ def solution(arr):
     return answer
 
 print(solution)
-adsfaasdf
