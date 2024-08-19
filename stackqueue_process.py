@@ -9,15 +9,15 @@ def solution(priorities, location):
         if max(priorities) == 0:
             break
         else: 
-            #print(pointer, len(priorities),priorities[pointer])
+            print(pointer, len(priorities),priorities[pointer])
             if priorities[pointer] == max(priorities):
                 priorities[pointer] = 0
                 order.append(pointer)
-                #print(priorities)
+                print(priorities)
             if pointer == len(priorities) - 1:
                 pointer = 0
             else: pointer += 1
-    
+    print(order)
     answer = order.index(location) + 1
     return answer
 
