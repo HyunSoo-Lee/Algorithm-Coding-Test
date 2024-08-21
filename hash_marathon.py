@@ -36,13 +36,13 @@ completion = ["josipa", "filipa", "marina", "nikola"]
 
 def solution(participant, completion):
     dict_participant = {}
-
+    #딕셔너리의 경우 key - value에서 사칙연산 사용 가능
     for p in participant:
         if p in dict_participant:
             dict_participant[p] += 1
         else:
             dict_participant[p] = 1
-    #print(dict_participant)
+    print(dict_participant)
 
     for c in completion:
         if c in dict_participant:
