@@ -47,7 +47,7 @@ def solution(participant, completion):
     for c in completion:
         if c in dict_participant:
             dict_participant[c] -= 1
-    #print(dict_participant)
+    print(dict_participant)
     
     for k,v in dict_participant.items():
         if v > 0:
@@ -55,12 +55,12 @@ def solution(participant, completion):
 
 def answer(participant, completion):
     participant_counter = Counter(participant)
-    #print(participant_counter)
+    print(participant_counter)
     completion_counter = Counter(completion)
-    #print(completion_counter)
+    print(completion_counter)
 
     diff = participant_counter - completion_counter
-    #print(diff)
+    print(diff)
     return list(diff.keys())[0]
     
 
