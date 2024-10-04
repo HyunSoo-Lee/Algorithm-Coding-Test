@@ -6,10 +6,10 @@ def comp_date(dp, dt, terms):
     for i in range (len(arr_dp)): arr_dp[i] = int(arr_dp[i])
     for i in range (len(arr_dt)): arr_dt[i] = int(arr_dt[i])
     
-    arr_dp[1] += terms
-    if arr_dp[1] > 12:
-        y, arr_dp[1] = divmod(arr_dp[1],12)
-        arr_dp[0] += y
+    #중요! 날짜 만드는 부분!
+    new_month = arr_dp[1] + terms
+    arr_dp[0] = (arr_dp[0]) + (new_month - 1) // 12
+    arr_dp[1] = (new_month - 1) % 12 + 1
     print(arr_dp, arr_dt)
     
     if arr_dp[0] > arr_dt[0]:
@@ -52,4 +52,6 @@ privacies = ["2021.05.02 A", "2021.07.01 B", "2022.02.19 C", "2022.02.20 C"]
 
 print(solution(today, terms, privacies))
 
-print(solution("2020.04.16", ["A 36", "S 4"], ["2017.04.17 A", "2014.04.16 S"]))
+print(solution(	"2020.01.01", ["Z 3", "D 5"], ["2019.01.01 D", "2019.11.15 Z", "2019.08.02 D", "2019.07.01 D", "2018.12.28 Z"]))
+
+print(solution("2020.10.01", ["A 11"], ["2019.12.01 A", "2000.01.01 A"]))
